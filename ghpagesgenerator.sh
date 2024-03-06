@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# Start HTML file
 echo "<html><body>" > index.html
-
-# List directories and files recursively
-find . -type d -not -path '*/\.*' -exec bash -c 'echo "<h2>{}:</h2>"; ls {}/*.html' \; >> index.html
-
-# End HTML file
+echo "<h2>ODM Api Documentation</h2>" >> index.html
+ls -R -1 | grep -vE 'index\.html|README\.md|ghpagesgenerator\.sh' | awk '!/\.$/ && /\.html$/{sub(/[^\/]+\//,"&<br/>")}1' >> index.html
 echo "</body></html>" >> index.html
