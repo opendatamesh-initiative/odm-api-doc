@@ -39,32 +39,32 @@
 
         <!-- Javascript -->
         <script>
-
             // Load Navabar
-            var navbarContainer = document.getElementById('navbar');
-            fetch('navbar.html').then(response => {
-                if(!response.ok) {
-                    throw new Error('Failed to load navbar: ' + response.status);
-                }
-                return response.text();
-            }).then(navbarHtml => {
-                navbarContainer.innerHTML = navbarHtml;
-                var activeLink = document.getElementById('overview-link');
-                activeLink.classList.add('active');
-            }).catch(error => {
-                console.error(error);
-            });
+            document.addEventListener('DOMContentLoaded', function() {
+                var navbarContainer = document.getElementById('navbar');
+                fetch('navbar.html').then(response => {
+                    if(!response.ok) {
+                        throw new Error('Failed to load navbar: ' + response.status);
+                    }
+                    return response.text();
+                }).then(navbarHtml => {
+                    navbarContainer.innerHTML = navbarHtml;
+                    var activeLink = document.getElementById('overview-link');
+                    activeLink.classList.add('active');
+                }).catch(error => {
+                    console.error(error);
+                });
 
-            // Cookies
-            // Check if the user has already consented
-            var consent = localStorage.getItem('cookie_consent');
-            if(!consent) {
-                // If no consent is found, show the cookie consent bar
-                showCookieConsent();
-            } else {
-                // If consent is found, hide the cookie consent bar
-                document.getElementById('cookie-consent').style.display = 'none';
-            }
+                // Cookies
+                // Check if the user has already consented
+                var consent = localStorage.getItem('cookie_consent');
+                if(!consent) {
+                    // If no consent is found, show the cookie consent bar
+                    showCookieConsent();
+                } else {
+                    // If consent is found, hide the cookie consent bar
+                    document.getElementById('cookie-consent').style.display = 'none';
+                }
             });
 
             // Functions
