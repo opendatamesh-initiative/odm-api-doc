@@ -1,67 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ODM API Documentation - Contacts</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <style>
-        ul {
-            list-style: none;
-            margin-top: 20px;
-            padding: 0;
-        }
-        li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-        }
-    </style>
-</head>
-<body>
-    <nav class="blue">
-        <div class="nav-wrapper">
-            <a href="index.html" class="brand-logo">
-                <img src="images/icon.png" alt="Logo">
-                <span class="title">ODM API Documentation</span>
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="index.html">Overview</a></li>
-                <li><a href="doc.html">Doc</a></li>
-                <li><a href="contact.html" class="nav-link active">Contacts</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <h4>Contacts and References</h4>
-        <ul>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>ODM API Documentation - Contacts</title>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link rel="stylesheet" type="text/css" href="styles.css">
+      <link rel="icon" type="image/png" href="images/favicon.ico">
+      <style>
+         ul {
+         list-style: none;
+         margin-top: 20px;
+         padding: 0;
+         }
+         li {
+         display: flex;
+         align-items: center;
+         margin-bottom: 10px;
+         }
+         .icon {
+         width: 24px;
+         height: 24px;
+         margin-right: 10px;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="navbar-placeholder" id="navbar"></div>
+      <div class="container">
+         <h4>Contacts and References</h4>
+         <ul>
             <li>
-                <img class="icon" src="https://cdn-icons-png.freepik.com/512/8748/8748009.png" alt="Email">
-                <a href="mailto:odm.info@quantyca.it" target="_blank">odm.info@quantyca.it</a>
+               <img class="icon" src="https://cdn-icons-png.freepik.com/512/8748/8748009.png" alt="Email">
+               <a href="mailto:odm.info@quantyca.it" target="_blank">odm.info@quantyca.it</a>
             </li>
             <li>
-                <img class="icon" src="https://cdn.icon-icons.com/icons2/2389/PNG/512/mailchimp_logo_icon_145088.png" alt="Mailchimp">
-                <a href="https://mailchi.mp/936d787cac89/open-data-mesh-initiative" target="_blank">Mailchimp</a>
+               <img class="icon" src="https://cdn.icon-icons.com/icons2/2389/PNG/512/mailchimp_logo_icon_145088.png" alt="Mailchimp">
+               <a href="https://mailchi.mp/936d787cac89/open-data-mesh-initiative" target="_blank">Mailchimp</a>
             </li>
             <li>
-                <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
-                <a href="https://github.com/opendatamesh-initiative" target="_blank">GitHub</a>
+               <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+               <a href="https://github.com/opendatamesh-initiative" target="_blank">GitHub</a>
             </li>
             <li>
-                <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" alt="Slack">
-                <a href="https://join.slack.com/t/opendatamesh/shared_invite/zt-1jrqfghls-68AxK_QzypaOeNyOkOwuog" target="_blank">Slack</a>
+               <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" alt="Slack">
+               <a href="https://join.slack.com/t/opendatamesh/shared_invite/zt-1jrqfghls-68AxK_QzypaOeNyOkOwuog" target="_blank">Slack</a>
             </li>
             <li>
-                <img class="icon" src="images/icon.png" alt="Site">
-                <a href="https://platform.opendatamesh.org/" target="_blank">Open Data Mesh Platform Site</a>
+               <img class="icon" src="images/icon.png" alt="Site">
+               <a href="https://platform.opendatamesh.org/" target="_blank">Open Data Mesh Platform Site</a>
             </li>
-    </ul>
-    </div>
-</body>
+         </ul>
+      </div>
+      <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             var navbarContainer = document.getElementById('navbar');
+             fetch('navbar.html')
+                 .then(response => {
+                     if (!response.ok) {
+                         throw new Error('Failed to load navbar: ' + response.status);
+                     }
+                     return response.text();
+                 })
+                 .then(navbarHtml => {
+                     navbarContainer.innerHTML = navbarHtml;
+                     var activeLink = document.getElementById('contacts-link');
+                     activeLink.classList.add('active');
+                 })
+                 .catch(error => {
+                     console.error(error);
+                 });
+         });
+      </script>
+   </body>
 </html>

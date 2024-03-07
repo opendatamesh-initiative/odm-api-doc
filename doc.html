@@ -1,8 +1,11 @@
-<html><head>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODM API Documentation - Doc</title>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="images/favicon.ico">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 .sublist { display: none; margin-top: 10px; margin-bottom: 10px;}
@@ -10,19 +13,7 @@
 .arrow { float: right; margin-left: 5px; }
 </style>
 </head><body>
-<nav class="blue">
-<div class="nav-wrapper">
-<a href="#" class="brand-logo">
-<img src="images/icon.png" alt="Logo">
-<span class="title">ODM API Documentation</span>
-</a>
-<ul id="nav-mobile" class="right hide-on-med-and-down">
-<li><a href="index.html">Overview</a></li>
-<li><a href="doc.html" class="nav-link active">Doc</a></li>
-<li><a href="contacts.html">Contacts</a></li>
-</ul>
-</div>
-</nav>
+<div class="navbar-placeholder" id="navbar"></div>
 <div class="container">
 <h4>API Documentation</h4>
 <ul class="collection">
@@ -53,6 +44,24 @@
 </ul>
 </div>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var navbarContainer = document.getElementById('navbar');
+  fetch('navbar.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to load navbar: ' + response.status);
+      }
+      return response.text();
+    })
+    .then(navbarHtml => {
+      navbarContainer.innerHTML = navbarHtml;
+      var activeLink = document.getElementById('doc-link');
+      activeLink.classList.add('active');
+    })
+    .catch(error => {
+      console.error(error);
+    });
+});
 function toggleList(element) {
   var sublist = element.querySelector('.sublist');
   sublist.classList.toggle('active');

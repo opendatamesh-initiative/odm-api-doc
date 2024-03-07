@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Navbar</title>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+   </head>
+   <body>
+      <nav class="blue">
+         <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">
+            <img src="images/icon.png" alt="Logo">
+            <span class="title">ODM API Documentation</span>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+               <li><a id="overview-link" href="index.html" class="nav-link">Overview</a></li>
+               <li><a id="doc-link" href="doc.html" class="nav-link">Doc</a></li>
+               <li><a id="contacts-link" href="contacts.html" class="nav-link">Contacts</a></li>
+            </ul>
+         </div>
+      </nav>
+   </body>
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var activeLink = document.querySelector('.active');
+          if (activeLink) {
+              activeLink.classList.add('active');
+          }
+      });
+   </script>
+</html>
