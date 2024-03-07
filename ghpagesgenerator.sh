@@ -43,7 +43,7 @@ for dir in */; do
         # List HTML files inside each version directory
         for file in "$dir"*.html; do
             if [[ "$file" != "$dir""index.html" && ! -d "$file" ]]; then
-                echo "<li><a href=\"$file\">$(basename "$file")</a></li>" >> doc.html
+                echo "<li><a href=\"$file\" target="_blank">$(basename "$file")</a></li>" >> doc.html
             fi
         done
         echo "</ul>" >> doc.html
