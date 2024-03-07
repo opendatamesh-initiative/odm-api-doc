@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODM API Documentation - Doc</title>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="style/styles.css">
 <link rel="icon" type="image/png" href="images/favicon.ico">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
@@ -43,34 +43,5 @@
 </li>
 </ul>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var navbarContainer = document.getElementById('navbar');
-  fetch('navbar.html')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to load navbar: ' + response.status);
-      }
-      return response.text();
-    })
-    .then(navbarHtml => {
-      navbarContainer.innerHTML = navbarHtml;
-      var activeLink = document.getElementById('doc-link');
-      activeLink.classList.add('active');
-    })
-    .catch(error => {
-      console.error(error);
-    });
-});
-function toggleList(element) {
-  var sublist = element.querySelector('.sublist');
-  sublist.classList.toggle('active');
-  var arrow = element.querySelector('.arrow');
-  if (sublist.classList.contains('active')) {
-    arrow.textContent = 'arrow_drop_up';
-  } else {
-    arrow.textContent = 'arrow_drop_down';
-  }
-}
-</script>
+<script src="javascript/doc.js"></script>
 </body></html>

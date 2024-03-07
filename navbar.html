@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Navbar</title>
-      <link rel="stylesheet" type="text/css" href="styles.css">
+      <link rel="stylesheet" type="text/css" href="style/styles.css">
    </head>
+
    <body>
-      <nav class="blue">
+      <nav class="nav">
          <div class="nav-wrapper">
             <a href="index.html" class="brand-logo">
             <img src="images/icon.png" alt="Logo">
@@ -21,12 +23,7 @@
          </div>
       </nav>
    </body>
-   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          var activeLink = document.querySelector('.active');
-          if (activeLink) {
-              activeLink.classList.add('active');
-          }
-      });
-   </script>
+
+   <script src="javascript/navbar.js"></script>
+
 </html>

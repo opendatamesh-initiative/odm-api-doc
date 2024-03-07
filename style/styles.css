@@ -1,0 +1,90 @@
+/* Custom for this site */
+.nav { background-color: #28ac9c; }
+.brand-logo { display: flex; align-items: center; height: 64px; }
+.brand-logo img { height: 50%; margin-right: 10px; }
+.brand-logo .title { font-size: 1.5rem; margin: 0; line-height: 64px; }
+.nav-wrapper { padding-left: 10px; padding-right: 10px; }
+.nav-wrapper .brand-logo { height: 100%; display: flex; align-items: center; }
+.nav-link.active { font-weight: bold; text-decoration: underline;}
+
+/* Fonts */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: fallback;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Cookie consent styles */
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.8s ease-in-out;
+    z-index: 1000;
+}
+
+.cookie-consent p {
+    margin: 10px 0;
+    color: #fff; /* Ensure text color is visible */
+}
+
+.cookie-settings {
+    margin-bottom: 10px;
+}
+
+/* Custom checkbox style */
+.cookie-settings input[type="checkbox"] {
+    visibility: visible;
+    display: none; /* Hide the default checkbox */
+}
+
+.cookie-settings input[type="checkbox"] + label {
+    color: #fff;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align items vertically */
+    cursor: pointer;
+}
+
+.cookie-settings input[type="checkbox"] + label:before {
+    content: '';
+    width: 18px; /* Checkbox width */
+    height: 18px; /* Checkbox height */
+    border: 2px solid #fff; /* Border color */
+    border-radius: 3px;
+    margin-right: 10px; /* Add some space between checkbox and label */
+    position: relative;
+}
+
+.cookie-settings input[type="checkbox"]:checked + label:before {
+    background-color: #4CAF50; /* Checkmark color */
+    border-color: #4CAF50; /* Border color when checked */
+}
+
+.cookie-settings input[type="checkbox"]:checked + label:after {
+    content: '\2714'; /* Unicode checkmark character */
+    font-size: 14px; /* Checkmark size */
+    color: #fff; /* Checkmark color */
+    position: absolute; /* Ensure proper positioning */
+    transform: translate(30%, -5%);
+}

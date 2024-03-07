@@ -5,31 +5,27 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>ODM API Documentation - Contacts</title>
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <link rel="stylesheet" type="text/css" href="styles.css">
+      <link rel="stylesheet" type="text/css" href="style/styles.css">
       <link rel="icon" type="image/png" href="images/favicon.ico">
       <style>
-         ul {
-         list-style: none;
-         margin-top: 20px;
-         padding: 0;
-         }
-         li {
-         display: flex;
-         align-items: center;
-         margin-bottom: 10px;
-         }
-         .icon {
-         width: 24px;
-         height: 24px;
-         margin-right: 10px;
-         }
+         ul { list-style: none; margin-top: 20px; padding: 0; }
+         li { display: flex; align-items: center; margin-bottom: 10px; }
+         .icon { width: 24px; height: 24px; margin-right: 10px; }
       </style>
    </head>
    <body>
+
+      <!-- Navbar -->
       <div class="navbar-placeholder" id="navbar"></div>
+
+      <!-- Main content -->
       <div class="container">
          <h4>Contacts and References</h4>
          <ul>
+            <li>
+               <img class="icon" src="https://www.quantyca.it/wp-content/uploads/2023/03/img_profilo_round.png" alt="Quantyca">
+               <a href="https://www.quantyca.it/en/home-en/" target="_blank">Quantyca Website</a>
+            </li>
             <li>
                <img class="icon" src="https://cdn-icons-png.freepik.com/512/8748/8748009.png" alt="Email">
                <a href="mailto:odm.info@quantyca.it" target="_blank">odm.info@quantyca.it</a>
@@ -52,25 +48,9 @@
             </li>
          </ul>
       </div>
-      <script>
-         document.addEventListener('DOMContentLoaded', function() {
-             var navbarContainer = document.getElementById('navbar');
-             fetch('navbar.html')
-                 .then(response => {
-                     if (!response.ok) {
-                         throw new Error('Failed to load navbar: ' + response.status);
-                     }
-                     return response.text();
-                 })
-                 .then(navbarHtml => {
-                     navbarContainer.innerHTML = navbarHtml;
-                     var activeLink = document.getElementById('contacts-link');
-                     activeLink.classList.add('active');
-                 })
-                 .catch(error => {
-                     console.error(error);
-                 });
-         });
-      </script>
+
+      <!-- Javascript -->
+      <script src="javascript/contacts.js"></script>
+
    </body>
 </html>
