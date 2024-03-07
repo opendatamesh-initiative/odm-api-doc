@@ -4,14 +4,10 @@
 echo "<html><head>" > doc.html
 echo "<title>ODM API Documentation - Doc</title>" >> doc.html
 echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">" >> doc.html
+echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">" >> doc.html
 echo "<link rel=\"icon\" type=\"image/png\" href=\"images/favicon.png\">" >> doc.html
 echo "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">" >> doc.html
 echo "<style>" >> doc.html
-echo ".brand-logo { display: flex; align-items: center; height: 64px; }" >> doc.html
-echo ".brand-logo img { height: 65%; margin-right: 10px; }" >> doc.html
-echo ".brand-logo .title { font-size: 1.5rem; margin: 0; line-height: 64px; }" >> doc.html
-echo ".nav-wrapper { padding-left: 10px; padding-right: 10px; }" >> doc.html
-echo ".nav-wrapper .brand-logo { height: 100%; display: flex; align-items: center; }" >> doc.html
 echo ".sublist { display: none; margin-top: 10px; margin-bottom: 10px;}" >> doc.html
 echo ".sublist.active { display: block; }" >> doc.html
 echo ".arrow { float: right; margin-left: 5px; }" >> doc.html
@@ -26,7 +22,7 @@ echo "<span class=\"title\">ODM API Documentation</span>" >> doc.html
 echo "</a>" >> doc.html
 echo "<ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">" >> doc.html
 echo "<li><a href=\"index.html\">Overview</a></li>" >> doc.html
-echo "<li><a href=\"doc.html\">Doc</a></li>" >> doc.html
+echo "<li><a href=\"doc.html\" class=\"nav-link active\">Doc</a></li>" >> doc.html
 echo "<li><a href=\"contacts.html\">Contacts</a></li>" >> doc.html
 echo "</ul>" >> doc.html
 echo "</div>" >> doc.html
