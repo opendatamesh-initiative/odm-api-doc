@@ -1,56 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>ODM API Documentation - Overview</title>
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <link rel="stylesheet" type="text/css" href="style/styles.css">
-      <link rel="icon" type="image/png" href="images/favicon.ico">
-   </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ODM API Documentation - Overview</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="style/styles.css">
+        <link rel="icon" type="image/png" href="images/favicon.ico">
+    </head>
 
-   <body>
+    <body>
 
-      <!-- Navbar -->
-      <div class="navbar-placeholder" id="navbar"></div>
+        <!-- Navbar -->
+        <div class="navbar-placeholder" id="navbar"></div>
 
-      <!-- Main content -->
-      <div class="container">
-         <h4>Overview</h4>
-         <p>
-            The API documentation for the open source data-ops platform
-            <a href="https://platform.opendatamesh.org/" target="_blank">Open Data Mesh Platform</a>.
-         </p>
-         <p>
-            The <a href="doc.html">Doc</a> section contains a list of any available version of the
-            Open Data Mesh Platform and for each version a list of API documentation for any module of the platform.<br/>
-            The API doc for each module is auto-generated through <a href="https://redocly.com/" target="_blank">redocly</a>.
-         </p>
-      </div>
-
-      <!-- Cookie consent -->
-      <div id="cookie-consent" class="cookie-consent">
+        <!-- Main content -->
         <div class="container">
-            <p>
-               We use cookies to recognize your repeated visits and preferences,
-               as well as to measure the effectiveness of our documentation
-               and whether users find what they're searching for.
-               With your consent, you're helping us to make our documentation better.
-            </p>
-            <div class="cookie-settings" style="display: none">
-                <input type="checkbox" id="github-cookie" checked />
-                <label for="github-cookie">GitHub</label>
-            </div>
-            <div class="cookie-buttons">
-                <button class="btn waves-effect waves-light" onclick="acceptCookies()">Accept</button>
-                <button class="btn waves-effect waves-light modal-trigger" data-target="cookie-settings-modal" onclick="showCookieSettings()">Manage Settings</button>
+            <h4>Overview</h4>
+            <p> The API documentation for the open source data-ops platform <a href="https://platform.opendatamesh.org/" target="_blank">Open Data Mesh Platform</a>. </p>
+            <p> The <a href="doc.html">Doc</a> section contains a list of any available version of the Open Data Mesh Platform and for each version a list of API documentation for any module of the platform.<br /> The API doc for each module is auto-generated through <a href="https://redocly.com/" target="_blank">redocly</a>. </p>
+        </div>
+
+        <!-- Cookie consent -->
+        <div id="cookie-consent" class="cookie-consent">
+            <div class="container">
+                <p> We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better. </p>
+                <div class="cookie-settings" style="display: none">
+                    <input type="checkbox" id="github-cookie" checked />
+                    <label for="github-cookie">GitHub</label>
+                </div>
+                <div class="cookie-buttons">
+                    <button class="btn waves-effect waves-light" onclick="acceptCookies()">Accept</button>
+                    <button class="btn waves-effect waves-light modal-trigger" data-target="cookie-settings-modal" onclick="showCookieSettings()">Manage Settings</button>
+                </div>
             </div>
         </div>
-      </div>
 
-      <!-- Javascript -->
-      <script src="javascript/index.js"></script>
+        <!-- Javascript -->
+        <script>
 
-   </body>
+            // Load Navabar
+            var navbarContainer = document.getElementById('navbar');
+            fetch('navbar.html').then(response => {
+                if(!response.ok) {
+                    throw new Error('Failed to load navbar: ' + response.status);
+                }
+                return response.text();
+            }).then(navbarHtml => {
+                navbarContainer.innerHTML = navbarHtml;
+                var activeLink = document.getElementById('overview-link');
+                activeLink.classList.add('active');
+            }).catch(error => {
+                console.error(error);
+            });
+
+            // Cookies
+            // Check if the user has already consented
+            var consent = localStorage.getItem('cookie_consent');
+            if(!consent) {
+                // If no consent is found, show the cookie consent bar
+                showCookieConsent();
+            } else {
+                // If consent is found, hide the cookie consent bar
+                document.getElementById('cookie-consent').style.display = 'none';
+            }
+            });
+
+            // Functions
+            function showCookieConsent() {
+                // Show the cookie consent bar with a transition
+                var cookieConsent = document.getElementById('cookie-consent');
+                cookieConsent.style.transition = 'bottom 0.8s';
+                cookieConsent.style.bottom = '0';
+            }
+
+            function acceptCookies() {
+                // Store the consent in localStorage
+                localStorage.setItem('cookie_consent', 'true');
+                // Hide the cookie consent bar
+                document.getElementById('cookie-consent').style.display = 'none';
+                // Enable or disable GitHub cookie based on user's choice
+                var githubCookieEnabled = document.getElementById('github-cookie').checked;
+                if(githubCookieEnabled) {
+                    // Set GitHub cookie with expiration date 1 year from now
+                    var expirationDate = new Date();
+                    expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+                    document.cookie = "github_cookie=enabled; expires=" + expirationDate.toUTCString() + "; path=/";
+                } else {
+                    // Delete GitHub cookie
+                    document.cookie = "github_cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                }
+            }
+
+            function showCookieSettings() {
+                // Show cookie settings modal
+                var cookieSettings = document.querySelector('.cookie-settings');
+                cookieSettings.style.display = 'block';
+            }
+        </script>
+
+    </body>
+
 </html>

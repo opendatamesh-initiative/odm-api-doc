@@ -24,6 +24,13 @@
       </nav>
    </body>
 
-   <script src="javascript/navbar.js"></script>
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         var activeLink = document.querySelector('.active');
+         if (activeLink) {
+            activeLink.classList.add('active');
+         }
+      });
+   </script>
 
 </html>

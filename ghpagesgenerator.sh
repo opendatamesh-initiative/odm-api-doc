@@ -38,5 +38,34 @@ for dir in */; do
 done
 echo "</ul>" >> doc.html
 echo "</div>" >> doc.html
-echo "<script src=\"javascript/doc.js\"></script>" >> doc.html
+echo "<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var navbarContainer = document.getElementById('navbar');
+  fetch('navbar.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to load navbar: ' + response.status);
+      }
+      return response.text();
+    })
+    .then(navbarHtml => {
+      navbarContainer.innerHTML = navbarHtml;
+      var activeLink = document.getElementById('doc-link');
+      activeLink.classList.add('active');
+    })
+    .catch(error => {
+      console.error(error);
+    });
+});
+function toggleList(element) {
+    var sublist = element.querySelector('.sublist');
+    sublist.classList.toggle('active');
+    var arrow = element.querySelector('.arrow');
+    if (sublist.classList.contains('active')) {
+        arrow.textContent = 'arrow_drop_up';
+    } else {
+        arrow.textContent = 'arrow_drop_down';
+    }
+}
+</script>" >> doc.html
 echo "</body></html>" >> doc.html
