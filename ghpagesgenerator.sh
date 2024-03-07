@@ -8,7 +8,7 @@ echo "<link rel=\"icon\" type=\"image/png\" href=\"images/favicon.png\">" >> doc
 echo "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">" >> doc.html
 echo "<style>" >> doc.html
 echo ".brand-logo { display: flex; align-items: center; height: 64px; }" >> doc.html
-echo ".brand-logo img { height: 75%; margin-right: 10px; }" >> doc.html
+echo ".brand-logo img { height: 65%; margin-right: 10px; }" >> doc.html
 echo ".brand-logo .title { font-size: 1.5rem; margin: 0; line-height: 64px; }" >> doc.html
 echo ".nav-wrapper { padding-left: 10px; padding-right: 10px; }" >> doc.html
 echo ".nav-wrapper .brand-logo { height: 100%; display: flex; align-items: center; }" >> doc.html
